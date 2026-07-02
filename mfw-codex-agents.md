@@ -35,12 +35,14 @@ Read for Svelte or SvelteKit work only when the consuming project uses Svelte:
 - `.agents/instructions/svelte.md`
 - `.agents/instructions/svelte-docs-index.md` only when selecting Svelte documentation sections.
 
-Read for Laravel AI SDK or AI-provider work only when the consuming project uses `laravel/ai` or the task is AI-related:
+Read for Laravel AI SDK or AI-provider work only when the consuming application's root `composer.json` directly requires `laravel/ai`, application code/config references the Laravel AI SDK, or the task is AI-related:
 - `.agents/skills/ai-sdk-development/SKILL.md`
 
 ## Stack Detection
 Before editing, inspect the consuming project instead of assuming a stack:
-- `composer.json` and `composer.lock` for Laravel, MetaFramework packages, `nwidart/laravel-modules`, `yajra/laravel-datatables*`, `laravel/ai`, Boost, Pint, PHPUnit, Larastan, and package versions.
+- `composer.json` and `composer.lock` for Laravel, MetaFramework packages, `nwidart/laravel-modules`, `yajra/laravel-datatables*`, `laravel/ai`, Boost, PAO, Pint, PHPUnit, Larastan, and package versions.
+- Treat `laravel/ai` installed only as a transitive dependency of `aboleon/metaframework-codex` as agent tooling, not proof that the application has AI features.
+- If the application uses Laravel AI SDK at runtime, `laravel/ai` must be present in the consuming application's root `require` section, not only through this dev-only agents package.
 - `package.json`, `vite.config.*`, `resources/js`, and `.svelte` files for Svelte or frontend tooling.
 - `Modules/`, `module.json`, and `config/modules.php` for Nwidart module structure.
 - Existing routes, controllers, Blade views, components, tests, and sibling files for local conventions.
@@ -86,6 +88,7 @@ Before editing, inspect the consuming project instead of assuming a stack:
 - If `.ai/hooks/validate-commit-message.*` exists and the user asks for a commit, validate the commit subject before committing.
 - If the project uses module-prefixed commit subjects, preserve that convention. If the commit validator enforces labels such as `Add:`, `Bugfix:`, `Fix:`, or `Update:`, use one of the accepted labels.
 - If PHP changed and Pint is installed, run the project's Pint command, usually `vendor/bin/pint --dirty`.
+- If Laravel PAO is installed, keep using the project's normal PHPUnit, Pest, Paratest, PHPStan, Rector, and Artisan commands. PAO should optimize agent output automatically; do not disable it unless human-readable output is explicitly needed.
 - If Blade changed and a Blade formatter is configured, run it on touched Blade files.
 - If Svelte or bundled JavaScript changed, run the relevant project check/build command when available.
 - If the repository is PHPUnit-only, write PHPUnit tests and do not introduce Pest. If a touched Pest test conflicts with a PHPUnit-only project rule, convert it within the scope of the change.

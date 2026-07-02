@@ -11,7 +11,10 @@
     "svelte"
   ],
   "require": {
-    "php": "^8.2"
+    "php": "^8.3",
+    "laravel/ai": "^0.2",
+    "laravel/boost": "^2.0",
+    "laravel/pao": "^1.0.6"
   },
   "autoload": {
     "psr-4": {

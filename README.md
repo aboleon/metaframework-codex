@@ -9,6 +9,10 @@ composer require --dev aboleon/metaframework-codex
 vendor/bin/mfw-codex-agents install
 ```
 
+Install this package as a dev dependency. Its normal Composer dependencies intentionally include Laravel Boost, Laravel PAO, and the Laravel AI SDK so upstream guideline, skill, `boost:update`, and agent-optimized command-output tooling are available while developing agent rules.
+
+If a consuming application uses Laravel AI SDK at runtime, that application must still require `laravel/ai` in its own root `require` section. Do not rely on this dev-only agents package to provide runtime AI dependencies in production installs.
+
 The installer adds a managed include block to the consuming project's `AGENTS.md`. Existing local project instructions are preserved.
 
 Use a custom target when needed:
@@ -34,6 +38,10 @@ The consuming project's `AGENTS.md` should keep project-specific facts and overr
 - Laravel AI SDK: AI SDK skill.
 
 Do not copy project-specific generated rules into this package. Add only normalized rules that can apply across projects.
+
+## Updating Upstream Skills
+
+Laravel, PAO, and AI SDK skill/tooling content is sourced from Laravel packages. To refresh it, update Composer dependencies in a disposable branch or scratch app, run `php artisan boost:update --no-interaction`, then sync the generated upstream skill directories into this package and review the diff before tagging a new package release.
 
 ## Package Layout
 

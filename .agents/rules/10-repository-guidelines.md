@@ -2,7 +2,7 @@
 
 ## Discover Before Editing
 - Inspect the consuming repository before applying package assumptions.
-- Use `composer.json` and `composer.lock` to detect Laravel, MetaFramework packages, Nwidart modules, Yajra DataTables, Laravel AI SDK, Pint, PHPUnit, Larastan, and Boost.
+- Use `composer.json` and `composer.lock` to detect Laravel, MetaFramework packages, Nwidart modules, Yajra DataTables, Laravel AI SDK, Boost, PAO, Pint, PHPUnit, and Larastan.
 - Use `package.json`, `vite.config.*`, `resources/js`, and `.svelte` files to detect Svelte, Vite, frontend build commands, and test/check scripts.
 - Check sibling files and nearby tests for naming, structure, and response conventions.
 

@@ -4,7 +4,7 @@ Use this file for Laravel backend work, especially when Laravel Boost, Laravel M
 
 ## Foundation
 - Discover installed versions from `composer.lock`, `composer.json`, and package manager output.
-- Do not assume Laravel, PHP, PHPUnit, Pint, Larastan, Sail, Livewire, or Boost versions from this package.
+- Do not assume Laravel, PHP, PHPUnit, Pint, Larastan, Sail, Livewire, Boost, or PAO versions from this package.
 - Follow existing code conventions and sibling patterns before shared defaults.
 - Reuse existing components before creating new ones.
 
@@ -40,6 +40,7 @@ When Laravel Boost or equivalent MCP tools are available:
 
 ## Formatting
 - Run the project's formatter for touched PHP files, usually `vendor/bin/pint --dirty` or the configured Composer script.
+- If Laravel PAO is installed, run the same project commands as usual and let PAO provide agent-optimized output automatically.
 
 ## Frontend Package Choices
 - Do not introduce Livewire, Tailwind CSS, Svelte, or another frontend stack unless it already exists in the project or the user explicitly asks.
