@@ -15,13 +15,8 @@
 - Keep Eloquent models focused on relationships, casts, scopes, and model-level invariants. Avoid fat models that own broad workflows.
 - Prefer named routes, route model binding, policies/gates, and framework conventions unless the project has an established alternate pattern.
 
-## SOLID Defaults
-- Single Responsibility: each class, method, and module should have one clear reason to change.
-- Open/Closed: add behavior through composition, focused extension points, typed configuration, or strategies instead of growing conditionals.
-- Liskov Substitution: implementations of a contract or parent type must keep compatible inputs, outputs, behavior, and error semantics.
-- Interface Segregation: create small role-specific contracts when contracts are needed.
-- Dependency Inversion: high-level behavior should depend on explicit collaborators or contracts, not hidden concrete infrastructure.
-- Avoid god objects, fat methods, hidden mutable state, static coupling, and repeated conditional configuration.
+## SOLID Scope
+- Apply the mandatory SOLID principles from `.agents/rules/01-core-runtime-rules.md`. This architecture file adds Laravel, module, MetaFramework, AJAX, Svelte-island, DataTables, CSS, view, and translation boundaries rather than restating the shared SOLID checklist.
 
 ## Nwidart Modules
 Apply only when the project uses `nwidart/laravel-modules`.

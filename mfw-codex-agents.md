@@ -109,15 +109,7 @@ Before editing, inspect the consuming project instead of assuming a stack:
 - If no meaningful test can cover the real contract, say so explicitly instead of adding a weak test.
 
 ## Mandatory SOLID Principles
-- All new code and refactors must apply SOLID principles. Review touched code for violations before finalizing.
-- Single Responsibility: each class, method, and module must have one clear responsibility and one primary reason to change. Move business rules and configuration out of controllers and views.
-- Open/Closed: add behavior through composition, typed configuration, strategies, or focused extension points. Avoid duplicated configuration blocks and growing type-based conditionals.
-- Liskov Substitution: implementations of a contract or parent type must remain interchangeable without changing expected behavior, inputs, outputs, or error semantics.
-- Interface Segregation: define small, role-specific contracts. Do not force consumers to depend on methods or data they do not use.
-- Dependency Inversion: high-level behavior must depend on contracts or explicit collaborators rather than concrete infrastructure. Inject dependencies instead of resolving them through service locators.
-- Do not create god objects or fat methods. Split broad responsibilities, long workflows, and unrelated state into cohesive services, actions, value objects, strategies, or focused private methods.
-- Prefer cohesive typed objects and explicit dependencies over associative arrays, hidden mutable state, static coupling, and repeated conditional configuration.
-- Tests must verify public behavior and contract compatibility so architectural improvements remain safe to extend.
+Apply the detailed SOLID checklist from `.agents/rules/01-core-runtime-rules.md` to all new code and refactors. That file is the source of truth for shared SOLID guidance.
 
 ## Package-Local Customization
 Consuming projects may keep extra project-specific rules in their own `AGENTS.md` below the managed include block. Those local rules should contain only facts that cannot be deduced from the repository or this package.
