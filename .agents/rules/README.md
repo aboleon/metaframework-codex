@@ -6,9 +6,10 @@ Read order:
 1. `01-core-runtime-rules.md`
 2. `10-repository-guidelines.md`
 3. `20-delivery-quality.md`
-4. `30-architecture.md` for Laravel, MetaFramework, Nwidart modules, Yajra DataTables, backend architecture, or database work
-5. `31-backoffice-ui-svelte-islands.md` for Svelte islands, back-office UI state, or legacy-to-modern frontend migration
-6. `40-laravel-boost-guidelines.md` when Laravel Boost or Laravel ecosystem docs/tools are available
+4. `25-code-complexity.md`
+5. `30-architecture.md` for Laravel, MetaFramework, Nwidart modules, Yajra DataTables, backend architecture, or database work
+6. `31-backoffice-ui-svelte-islands.md` for Svelte islands, back-office UI state, or legacy-to-modern frontend migration
+7. `40-laravel-boost-guidelines.md` when Laravel Boost or Laravel ecosystem docs/tools are available
 
 Conditional rule loading matters:
 - Do not read Svelte-specific rules unless the consuming project uses Svelte or the task is about Svelte.

@@ -19,6 +19,7 @@ Always read:
 - `.agents/rules/01-core-runtime-rules.md`
 - `.agents/rules/10-repository-guidelines.md`
 - `.agents/rules/20-delivery-quality.md`
+- `.agents/rules/25-code-complexity.md`
 
 Read for Laravel/PHP/backend work:
 - `.agents/rules/30-architecture.md`
@@ -62,6 +63,7 @@ Before editing, inspect the consuming project instead of assuming a stack:
 - Keep strings translatable in user-facing Laravel/Blade/UI code.
 - Verify behavior through the real entrypoint when the task affects runtime behavior. Tests are evidence, not a substitute for the actual reported flow when one exists.
 - Do not add superficial tests just to claim coverage. Tests must assert the real contract of the change.
+- Keep changed hand-written functions, methods, closures, and handlers within the cyclomatic complexity budget in `.agents/rules/25-code-complexity.md`.
 - Keep replies concise and focused on the important result.
 - Do not create documentation files unless the user explicitly asks for documentation or the repository already expects that generated artifact.
 

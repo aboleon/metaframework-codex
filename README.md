@@ -31,7 +31,8 @@ vendor/bin/mfw-codex-agents install --dry-run
 
 The consuming project's `AGENTS.md` should keep project-specific facts and overrides. The managed block points agents to `mfw-codex-agents.md`, which then loads supporting files conditionally:
 
-- Always: core runtime, repository, and delivery quality rules.
+- Always: core runtime, repository, delivery quality, and code complexity rules.
+- Code quality: cyclomatic complexity budget, refactoring guidance, acceptable exceptions, and branch-aware testing expectations.
 - Laravel/backend: architecture, Boost, and Laravel best-practice skill rules.
 - MetaFramework/MFW/CSSCrush: project rules.
 - Svelte: Svelte instructions and Svelte-island UI rules.
