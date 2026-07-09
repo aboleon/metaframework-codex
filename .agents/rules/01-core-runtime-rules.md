@@ -2,6 +2,7 @@
 
 ## Critical Constraints
 - Do not commit or push unless explicitly asked by the user.
+- Never execute database-mutating migration commands without explicit user authorization in the current request. Creating or editing a migration file is not authorization to run it.
 - Never edit `vendor/` code directly.
 - Do not change dependencies without approval unless the task explicitly requires dependency work.
 - Keep user-facing strings translatable via the project's established translation helpers.

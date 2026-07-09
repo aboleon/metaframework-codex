@@ -51,6 +51,8 @@ Before editing, inspect the consuming project instead of assuming a stack:
 
 ## Core Expectations
 - Do not commit or push unless the user explicitly asks.
+- Never execute database-mutating migration commands without explicit user authorization in the current request. This includes `migrate`, `rollback`, `reset`, `refresh`, `fresh`, `db:wipe`, and package/module equivalents.
+- A request to create or edit migration files does not authorize running them. Do not infer authorization from the task requiring schema changes, the environment being local or development, migrations being pending, or the command being reversible. Read-only inspection such as `migrate:status` and `migrate --pretend` is allowed.
 - Do not edit `vendor/` directly. Treat Composer packages, local path repositories, and published vendor overrides as package boundaries unless the user asks for a package-level change.
 - Follow existing project conventions first, then these shared defaults.
 - Privilege direct accessor use: when an accessor/helper result is used only once, call it at the use site instead of assigning it to a local variable. Use a local variable only when the value is reused, expensive, or materially improves readability.

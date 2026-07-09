@@ -38,7 +38,8 @@ Apply only when `yajra/laravel-datatables*` packages or existing DataTable class
 ## Build and Development Commands
 - Use the project's own scripts first, such as `composer test`, `php artisan test`, `vendor/bin/phpunit`, `npm run build`, `npm run check`, or hook scripts.
 - Run `php artisan optimize:clear` only when stale Laravel caches are plausibly involved.
-- Run migrations or rollback commands only when the task requires database state changes and the user context allows it.
+- Never run database-mutating migration commands unless the user explicitly authorizes execution in the current request. Do not treat a request to create or edit migrations as permission to execute them.
+- Prohibited without explicit authorization: `migrate`, `rollback`, `reset`, `refresh`, `fresh`, `db:wipe`, and package/module equivalents. Read-only `migrate:status` and `migrate --pretend` checks are allowed.
 
 ## Coding Style and Naming
 - PHP classes use StudlyCase; variables and methods use camelCase.

@@ -1,5 +1,23 @@
 # Migration Best Practices
 
+## Never Execute Migrations Without Explicit Authorization
+
+Never execute a database-mutating migration command unless the user explicitly authorizes that execution in the current request.
+
+This prohibition includes:
+
+- `php artisan migrate`
+- `php artisan migrate:rollback`
+- `php artisan migrate:reset`
+- `php artisan migrate:refresh`
+- `php artisan migrate:fresh`
+- `php artisan db:wipe`
+- package-specific and module-specific equivalents
+
+A request to create, edit, review, or test migration files does not authorize running them. Do not infer permission because the task requires schema changes, the database is local or development-only, migrations are pending, or a command appears reversible.
+
+Read-only inspection through commands such as `php artisan migrate:status` and `php artisan migrate --pretend` is allowed.
+
 ## Generate Migrations with Artisan
 
 Always use `php artisan make:migration` for consistent naming and timestamps.
