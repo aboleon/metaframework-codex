@@ -51,6 +51,8 @@ Before editing, inspect the consuming project instead of assuming a stack:
 
 ## Core Expectations
 - Do not commit or push unless the user explicitly asks.
+- When the user explicitly asks the agent to create a commit, first create the requested commit, then calculate its stable history number with `git rev-list --count HEAD`. Create `_docs/commits/{commit-number}.md` with a brief summary of what the commit changed, stage that file, and run `git commit --amend --no-edit` so the change and its summary remain in one commit. Do not overwrite an existing summary file; stop and ask the user if the calculated path already exists. This generated commit summary is an expected repository artifact and is exempt from the general restriction on unsolicited documentation files.
+- A request to commit still does not authorize pushing. Push only when the user explicitly asks for it.
 - Never execute database-mutating migration commands without explicit user authorization in the current request. This includes `migrate`, `rollback`, `reset`, `refresh`, `fresh`, `db:wipe`, and package/module equivalents.
 - A request to create or edit migration files does not authorize running them. Do not infer authorization from the task requiring schema changes, the environment being local or development, migrations being pending, or the command being reversible. Read-only inspection such as `migrate:status` and `migrate --pretend` is allowed.
 - Do not edit `vendor/` directly. Treat Composer packages, local path repositories, and published vendor overrides as package boundaries unless the user asks for a package-level change.

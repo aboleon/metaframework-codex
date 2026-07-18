@@ -2,12 +2,24 @@
 
 ## Critical Constraints
 - Do not commit or push unless explicitly asked by the user.
+- When the user explicitly asks the agent to create a commit, follow the agent-created commit documentation workflow below.
 - Never execute database-mutating migration commands without explicit user authorization in the current request. Creating or editing a migration file is not authorization to run it.
 - Never edit `vendor/` code directly.
 - Do not change dependencies without approval unless the task explicitly requires dependency work.
 - Keep user-facing strings translatable via the project's established translation helpers.
 - Use dedicated Form Request classes for Laravel validation unless an existing local pattern clearly requires a different boundary.
 - Do not create project-specific documentation files unless the user asks for documentation or the repository already expects that artifact.
+
+## Agent-Created Commit Documentation
+- This workflow applies whenever the agent creates a commit at the user's explicit request.
+- Create the requested commit only after the relevant formatting and verification steps pass.
+- After the commit succeeds, calculate its commit number with `git rev-list --count HEAD`. Use this history count instead of a commit hash because amending a commit changes its hash.
+- Create `_docs/commits/{commit-number}.md` and briefly summarize what the commit changed. Keep the summary specific to that commit.
+- If the calculated summary path already exists, do not overwrite it. Stop and ask the user how to resolve the collision.
+- Stage the new summary file without staging unrelated changes, then run `git commit --amend --no-edit` so the code changes and summary are contained in the same final commit.
+- Verify that the amended commit contains the intended changes and `_docs/commits/{commit-number}.md`.
+- The generated commit summary is an expected repository artifact and is exempt from the restriction on unsolicited documentation files.
+- Do not push unless the user explicitly asks for a push. A commit request alone never authorizes pushing.
 
 ## Code Quality
 - Follow existing project conventions before shared defaults.
