@@ -13,12 +13,12 @@
 ## Agent-Created Commit Documentation
 - This workflow applies whenever the agent creates a commit at the user's explicit request.
 - Create the requested commit only after the relevant formatting and verification steps pass.
-- Before creating the commit, generate a unique 40-character lowercase hexadecimal commit version. Keep this value stable throughout the workflow; it is an explicit identifier and is separate from Git's content-derived object SHA.
-- Include `Commit-Version: {commit-version}` as a Git commit-message trailer when creating the requested commit.
-- Create `_docs/commits/{commit-version}.md` and briefly summarize what the commit changed. The filename without `.md` and the `Commit-Version` trailer value must be visually identical.
-- If the calculated summary path already exists, do not overwrite it. Stop and ask the user how to resolve the collision.
-- Stage the new summary file without staging unrelated changes, then run `git commit --amend --no-edit` so the code changes and summary are contained in the same final commit.
-- Verify that the amended commit contains the intended changes, the unchanged `Commit-Version: {commit-version}` trailer, and `_docs/commits/{commit-version}.md` with an exactly matching identifier.
+- After the initial commit succeeds, run `git rev-parse --short=4 HEAD` to derive its shortest unique abbreviated SHA. Git uses at least four hexadecimal characters and automatically lengthens the result when four are not unique.
+- Keep this value as the stable documentation identifier. Amending changes the internal Git SHA, but the identifier must remain the abbreviation captured from the initial commit.
+- If `_docs/commits/{identifier}.md` already exists, do not overwrite it. Increase the requested abbreviation length until the resulting filename is unused.
+- Create `_docs/commits/{identifier}.md` and briefly summarize what the commit changed. Keep the summary specific to that commit.
+- Stage the new summary file without staging unrelated changes, then amend the commit message so its subject begins with `{identifier}` followed by one space and the original subject. Preserve any original message body.
+- Verify that the amended commit contains the intended changes, `_docs/commits/{identifier}.md`, and a subject whose first token exactly matches the Markdown filename without `.md`.
 - The generated commit summary is an expected repository artifact and is exempt from the restriction on unsolicited documentation files.
 - Do not push unless the user explicitly asks for a push. A commit request alone never authorizes pushing.
 
