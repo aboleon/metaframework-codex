@@ -76,6 +76,11 @@ Before editing, inspect the consuming project instead of assuming a stack:
 - Keep replies concise and focused on the important result.
 - Do not create documentation files unless the user explicitly asks for documentation or the repository already expects that generated artifact.
 
+## Existing UI Reuse
+- Before creating or styling any interface element, inspect the surrounding view and existing project components for the established markup, component classes, framework utilities, typography, spacing, colors, buttons, and icon conventions.
+- Reuse an existing UI component and its styles exactly when it already covers the requested element. Add custom markup, classes, or CSS only for behavior or content that the existing component cannot express.
+- Treat reference screenshots as descriptions of composition and visual intent, not as authorization to replace established project UI conventions with a bespoke component.
+
 ## High-Priority Laravel Defaults
 - Use Form Request classes for validation. Use validated data (`validated()`, typed accessors, or explicit normalization), not `$request->all()` for mass operations.
 - In MetaFramework/MFW Blade forms, use `mfw-inputable` components before raw form controls whenever the component supports the field. This includes `x-mfw-inputable::input`, `checkbox`, `datepicker`, `inputdatemask`, `inputradio`, `radio`, `number`, `select`, `textarea`, and `validation-error`.
