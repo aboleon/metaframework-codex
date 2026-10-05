@@ -67,6 +67,7 @@ Apply only when Yajra DataTables is present.
 ## CSS and Views
 - Use the stylesheet system already established by the project.
 - If CSSCrush is present, write CSSCrush source with nesting and shared composition in the owning stylesheet or partial.
+- Prefer semantic HTML element selectors nested under an existing component/root selector (for example, `.component { > header { ... } }`) over adding classes solely as styling hooks. Keep class usage minimal: use classes for component boundaries, meaningful states or variants, or targets that cannot be identified clearly from the semantic structure; avoid redundant BEM-style descendant classes and class stacks.
 - Avoid inline `<style>` blocks and one-off component-local CSS unless the project already uses that pattern for the same surface or there is a strong technical reason.
 - Keep Blade views focused on rendering. Avoid large inline data normalization, database queries, or business decisions inside Blade.
 

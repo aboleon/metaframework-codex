@@ -86,13 +86,14 @@
 ## CSSCrush Rules
 
 - Apply only when CSSCrush is present in the project.
+- Author styles in the source files processed by the installed PHP CSSCrush package, using syntax supported by that version. Use CSSCrush nesting and shared composition; do not assume Sass/SCSS-only syntax, and do not hand-edit generated `.crush.css` output.
 - Before adding CSS, check which Blade view or layout loads the stylesheet with `csscrush_tag()` and whether child views override `@section('css')`.
 - Do not duplicate the same CSS rules in multiple files. Reuse the stylesheet that owns the component or move styles only when the owning render path requires it.
 - Do not add inline `<style>` blocks in Blade partials unless the project already uses that pattern for the same kind of component or the user explicitly asks for self-contained markup.
 - For partials reused across multiple layouts, verify each render path and place styles where all relevant paths load them.
 - After frontend CSS changes, verify the rendered HTML references the expected CSSCrush output and that the target selector appears in the served CSS or intentionally in the partial.
 - Keep CSS changes narrow. Do not introduce unrelated spacing, palette, typography, or layout changes while moving or reusing a block.
-- Keep component-local CSS class names short and scoped by their owning block when that is the project convention.
+- Prefer semantic HTML element selectors nested beneath an existing component/root selector (for example, `.component { > header { ... } }`) over adding classes solely as styling hooks. Keep class usage minimal: reserve classes for component roots, meaningful states or variants, or targets that cannot be identified clearly from the semantic structure. Avoid redundant BEM-style descendant classes and class stacks.
 
 ## MFW Form Rules
 
